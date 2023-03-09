@@ -3,8 +3,9 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/Dashboard/order_status_count.dashboard.lookml"
 
-# Datagroups define a caching policy for an Explore. To learn more,
+## Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
 
 datagroup: ecom_prabhu_230_default_datagroup {
