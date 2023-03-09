@@ -4,6 +4,7 @@ connection: "thelook"
 # include all the views
 include: "/views/**/*.view"
 include: "/Dashboard/order_status_count.dashboard.lookml"
+include: "/Dashboard/LookML_Dashboard_Test.dashboard.lookml"
 
 ## Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.

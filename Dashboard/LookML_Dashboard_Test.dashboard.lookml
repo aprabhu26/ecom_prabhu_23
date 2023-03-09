@@ -12,7 +12,7 @@
     model: ecom_prabhu_230
     explore: order_items
     type: looker_grid
-    fields: [department_grp, products.department, products.brand, order_items.order_id,order_items.returned_date,
+    fields: [products.department, products.brand, order_items.order_id,order_items.returned_date,
     inventory_items.created_date, orders.created_date,
     orders.status, order_items.count, orders.count, products.count, inventory_items.total_cost,sum_of_sale_price]
     sorts: [order_items.returned_date desc, inventory_items.created_date desc, orders.created_date desc]
