@@ -38,6 +38,14 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+    # html:
+    # {% if value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
     html:
     {% if value == 'complete' %}
     {% assign indicator = "green,▲" | split: ',' %}
