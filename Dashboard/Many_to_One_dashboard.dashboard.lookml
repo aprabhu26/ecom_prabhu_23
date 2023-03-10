@@ -13,10 +13,10 @@
     rich_content_json: '{"format":"slate"}'
     row: 0
     col: 0
-    width: 7
+    width: 24
     height: 1
 
-  - title: Tile 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  - title: Tile 1
     name: New Tile 1
     model: ecom_prabhu_230
     explore: order_items
@@ -83,7 +83,7 @@
     rich_content_json: '{"format":"slate"}'
     row: 2
     col: 0
-    width: 7
+    width: 24
     height: 1
 
   - title: Tile 2
@@ -154,7 +154,7 @@
     rich_content_json: '{"format":"slate"}'
     row: 4
     col: 0
-    width: 7
+    width: 24
     height: 1
 
   - title: Tile 3
@@ -222,7 +222,7 @@
     rich_content_json: '{"format":"slate"}'
     row: 6
     col: 0
-    width: 7
+    width: 24
     height: 1
 
   - title: Tile 4
