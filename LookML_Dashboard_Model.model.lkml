@@ -1,9 +1,12 @@
 connection: "thelook"
 
-include: "/views/*.view.lkml"
-include: "/Dashboard/order_status_count.dashboard.lookml"
-include: "/Dashboard/Test_case_LookML_Dashboard_1.dashboard.lookml"
-include: "/Dashboard/LookML_Dashboard_Test.dashboard.lookml"
+# include: "/views/*.view.lkml"
+# include: "/Dashboard/order_status_count.dashboard.lookml"
+# include: "/Dashboard/Test_case_LookML_Dashboard_1.dashboard.lookml"
+# include: "/Dashboard/LookML_Dashboard_Test.dashboard.lookml"
+
+include: "/Dashboard/*.dashboard.lookml"
+
 # include all views in the views/ folder in this project
 # include: "/**/*.view.lkml"                 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard

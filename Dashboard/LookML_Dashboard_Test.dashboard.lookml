@@ -6,6 +6,7 @@
 
   filters:
 
+
   elements:
   - name: add_a_unique_name_1678350708
     title: Untitled Visualization
@@ -42,12 +43,12 @@
       type: sum
       _kind_hint: measure
       _type_hint: number
-    - category: dimension
-      description: ''
-      label: Department_grp
-      value_format:
-      value_format_name:
-      calculation_type: group_by
+    # - category: dimension
+    #   description: ''
+    #   label: Department_grp
+    #   value_format:
+    #   value_format_name:
+    #   calculation_type: group_by
 
       query_timezone: America/Los_Angeles
       show_view_names: false
