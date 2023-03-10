@@ -1,11 +1,22 @@
-- dashboard: mymanytoone
+- dashboard: manytoone
   title: My Many To One LookML Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
   tile_size: 100
   preferred_slug: YC1JnRyoJGwDI3vs94p3op
   elements:
-  - title: New Tile 1
+  - name: ''
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: '[{"type":"h1","children":[{"text":"Tile 1"}]}]'
+    rich_content_json: '{"format":"slate"}'
+    row: 0
+    col: 0
+    width: 7
+    height: 1
+
+  - title: Tile 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     name: New Tile 1
     model: ecom_prabhu_230
     explore: order_items
@@ -35,7 +46,7 @@
     show_sql_query_menu_options: false
     show_totals: true
     show_row_totals: true
-    truncate_header: false
+    truncate_header: true
     series_cell_visualizations:
       order_items.count:
         is_active: false
@@ -55,14 +66,27 @@
     defaults_version: 1
     series_types: {}
     hidden_pivots: {}
-    title_hidden: true
+    title_hidden: False
+    title_text_alignment: left
     listen: {}
-    row: 0
+    row: 1
     col: 0
     width: 24
+    height: 5
+
+
+  - name: " (2)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: '[{"type":"h1","children":[{"text":"Tile 2"}]}]'
+    rich_content_json: '{"format":"slate"}'
+    row: 2
+    col: 0
+    width: 7
     height: 1
 
-  - title: New Tile 2
+  - title: Tile 2
     name: New Tile 2
     model: ecom_prabhu_230
     explore: order_items
@@ -85,7 +109,7 @@
     table_theme: white
     limit_displayed_rows: false
     enable_conditional_formatting: false
-    header_text_alignment: left
+    header_text_alignment: center
     header_font_size: '12'
     rows_font_size: '12'
     conditional_formatting_include_totals: false
@@ -113,14 +137,27 @@
     defaults_version: 1
     series_types: {}
     hidden_pivots: {}
-    title_hidden: true
+    title_hidden: False
+    title_alingment: right
     listen: {}
-    row: 1
+    row: 3
     col: 0
     width: 24
-    height: 2
+    height: 5
 
-  - title: New Tile 3
+
+  - name: "(3)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: '[{"type":"h1","children":[{"text":"Tile 3"}]}]'
+    rich_content_json: '{"format":"slate"}'
+    row: 4
+    col: 0
+    width: 7
+    height: 1
+
+  - title: Tile 3
     name: New Tile 3
     model: ecom_prabhu_230
     explore: order_items
@@ -139,10 +176,10 @@
     hide_totals: false
     hide_row_totals: false
     size_to_fit: true
-    table_theme: white
+    table_theme: yellow
     limit_displayed_rows: false
     enable_conditional_formatting: false
-    header_text_alignment: left
+    header_text_alignment: right
     header_font_size: '12'
     rows_font_size: '12'
     conditional_formatting_include_totals: false
@@ -170,14 +207,25 @@
     defaults_version: 1
     series_types: {}
     hidden_pivots: {}
-    title_hidden: true
+    title_hidden: False
     listen: {}
-    row: 2
+    row: 5
     col: 0
     width: 24
+    height: 5
+
+  - name: " (4)"
+    type: text
+    title_text: ''
+    subtitle_text: ''
+    body_text: '[{"type":"h1","children":[{"text":"Tile 4"}]}]'
+    rich_content_json: '{"format":"slate"}'
+    row: 6
+    col: 0
+    width: 7
     height: 1
 
-  - title: New Tile 4
+  - title: Tile 4
     name: New Tile 4
     model: ecom_prabhu_230
     explore: order_items
@@ -228,9 +276,9 @@
     defaults_version: 1
     series_types: {}
     hidden_pivots: {}
-    title_hidden: true
+    title_hidden: False
     listen: {}
-    row: 3
+    row: 7
     col: 0
     width: 24
-    height: 2
+    height: 5

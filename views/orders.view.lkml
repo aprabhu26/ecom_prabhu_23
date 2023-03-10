@@ -73,6 +73,11 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  dimension: Non_null_user_id {
+    type: yesno
+    sql: if(${user_id} = null,"Yes","No");;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]

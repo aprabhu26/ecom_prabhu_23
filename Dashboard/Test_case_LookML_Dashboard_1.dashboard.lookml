@@ -8,14 +8,14 @@
 
   elements:
     - dashboard: test_case_1
-  title: Test_case_1
-  layout: newspaper
-  preferred_viewer: dashboards-next
-  description: ''
-  preferred_slug: AWcwSPFNjrmmKr759wJvj6
+  # title: Test_case_12
+  # layout: newspaper
+  # preferred_viewer: dashboards-next
+  # description: ''
+  # preferred_slug: AWcwSPFNjrmmKr759wJvj6
   elements:
-  - title: Test_case_1
-    name: Test_case_1
+  - title: Test_case_1(Tile 1)
+    name: Test_case_1(Tile 1)
     model: ecom_prabhu_230
     explore: order_items
     type: single_value
@@ -78,6 +78,7 @@
     col: 0
     width: 8
     height: 6
+
   - title: Test_case_1(tile1)
     name: Test_case_1(tile1)
     model: ecom_prabhu_230
@@ -147,6 +148,7 @@
     col: 8
     width: 8
     height: 6
+
   - title: Test_case_1(tile2)
     name: Test_case_1(tile2)
     model: ecom_prabhu_230
@@ -228,6 +230,8 @@
     col: 0
     width: 24
     height: 3
+
+
   - title: Test_case_1(tile3)
     name: Test_case_1(tile3)
     model: ecom_prabhu_230
