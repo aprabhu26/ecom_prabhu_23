@@ -72,7 +72,7 @@
     row: 1
     col: 0
     width: 24
-    height: 5
+    height: 3
 
 
   - name: " (2)"
@@ -143,7 +143,7 @@
     row: 3
     col: 0
     width: 24
-    height: 5
+    height: 3
 
 
   - name: "(3)"
@@ -212,7 +212,7 @@
     row: 5
     col: 0
     width: 24
-    height: 5
+    height: 3
 
   - name: " (4)"
     type: text
@@ -281,4 +281,4 @@
     row: 7
     col: 0
     width: 24
-    height: 5
+    height: 3
