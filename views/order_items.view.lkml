@@ -79,4 +79,35 @@ view: order_items {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
   }
+
+  dimension: Dummy {
+    type: string
+    sql: 1 ;;
+    html: <div>
+          <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
+
+          <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;target: "_self"" href="https://gcpl232.cloud.looker.com/dashboards/143?state-{{ _filters['users.state']| url_encode}}&category-{{ _filters['products.category'] | url_encode}}"> Detailed </a>
+
+          <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#home"> Summarised </a>
+
+</nav>
+
+</div> ;;
+  }
+
+  dimension: Dummy1 {
+    type: string
+    sql: 1 ;;
+    html: <div style="border-bottom: solid 1px #4285F4;">
+
+      <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
+
+      <a style="padding: 5px 15px; target: "_self"; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" href="https://gcpl232.cloud.looker.com/dashboards/142?state-{{ _filters['users.state']| url_encode}}&category-{{ _filters['products.category'] | url_encode}}"> Summarised </a>
+
+      <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#home"> Detailed </a>
+
+      </nav>
+
+      </div> ;;
+  }
 }
