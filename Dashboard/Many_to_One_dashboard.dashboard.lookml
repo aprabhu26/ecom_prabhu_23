@@ -5,7 +5,7 @@
   tile_size: 100
   preferred_slug: YC1JnRyoJGwDI3vs94p3op
   elements:
-  - name: ''
+  - name: '1'
     type: text
     title_text: ''
     subtitle_text: ''
@@ -16,7 +16,8 @@
     width: 24
     height: 1
 
-  - title: Tile 1
+
+  - title: ' '
     name: New Tile 1
     model: ecom_prabhu_230
     explore: order_items
@@ -138,7 +139,7 @@
     series_types: {}
     hidden_pivots: {}
     title_hidden: False
-    title_alingment: right
+    title_alingment: left
     listen: {}
     row: 3
     col: 0
