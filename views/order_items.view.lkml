@@ -86,7 +86,7 @@ view: order_items {
     html: <div>
           <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
 
-          <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" target="new" href="http://gcpl232.cloud.looker.com/dashboards/143?state={{ _filters['users.state']| url_encode}}&category={{ _filters['products.category'] | url_encode}}"> Detailed </a>
+          <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" target="new" href="http://gcpl232.cloud.looker.com/dashboards/143?State={{ _filters['users.state'] | url_encode }}"> Detailed </a>
 
           <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#home"> Summarised </a>
 
@@ -94,20 +94,6 @@ view: order_items {
 
 </div> ;;
   }
-# Target ="new" is used in html parameter to redirect to new tab.
-  dimension: Dummy1 {
-    type: string
-    sql: 1 ;;
-    html: <div style="border-bottom: solid 1px #4285F4;">
-
-      <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
-
-      <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" target= "new" href="http://gcpl232.cloud.looker.com/dashboards/142?state={{ _filters['users.state']| url_encode}}&category={{ _filters['products.category'] | url_encode}}"> Summarised </a>
-
-      <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#home"> Detailed </a>
-
-      </nav>
-
-      </div> ;;
-  }
+           # Target ="new" is used in html parameter to redirect to new tab.
+           # BY using the  href="http://gcpl232.cloud.looker.com/dashboards/143?State={{ _filters['users.state'] | url_encode }}" filter can pass to nect dashboard that linked.
 }
