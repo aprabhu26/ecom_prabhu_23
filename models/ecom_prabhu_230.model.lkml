@@ -14,7 +14,8 @@ datagroup: ecom_prabhu_230_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-persist_with: ecom_prabhu_230_default_datagroup
+#persist_with: ecom_prabhu_230_default_datagroup
+persist_for: "0 seconds"
 
 # Explores allow you to join together different views (database tables) based on the
 # relationships between fields. By joining a view into an Explore, you make those
