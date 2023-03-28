@@ -69,7 +69,8 @@ view: users {
     sql: ${TABLE}.email ;;
     link: {
       label: "Dashboard_210"
-      url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}& products.category={{ rendered_value | replace: ',', '^,' | url_encode}}"
+      url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{ orders.status | replace: ',', '^,' | url_encode}}"
+      # url: "https://gcpl232.cloud.looker.com/dashboards/212?Status={{ orders.status | replace: ',', '^,' | url_encode}}&Department={{ department | replace: ',','^,' | url_encode}}"
 
     }
 
