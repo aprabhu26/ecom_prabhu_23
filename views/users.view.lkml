@@ -69,7 +69,7 @@ view: users {
     sql: ${TABLE}.email ;;
 
     link: {
-      url: "https://gcpl232.cloud.looker.com/dashboards/210?email={{ value | replace: ',', '^,' | url_encode}}"
+      url: "https://gcpl232.cloud.looker.com/dashboards/210?Email={{ value | replace: ',', '^,' | url_encode}}&First+Name={{ value | replace: ',', '^,' | url_encode}}"
 
     }
 
