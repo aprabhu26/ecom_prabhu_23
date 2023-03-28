@@ -27,11 +27,13 @@ persist_for: "0 seconds"
 # To create more sophisticated Explores that involve multiple views, you can use the join parameter.
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
-
+explore: dimensionalizing_the_measure {}
 
 explore: imgsrc1onerroralert2 {}
 
 explore: account {}
+
+explore: sql_runner_query {}
 
 explore: billion_orders {
   join: orders {
