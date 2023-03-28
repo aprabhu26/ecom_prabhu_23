@@ -67,9 +67,9 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
-
     link: {
-      url: "https://gcpl232.cloud.looker.com/dashboards/210?Email={{ value | replace: ',', '^,' | url_encode}}&First+Name={{ value | replace: ',', '^,' | url_encode}}"
+      label: "Dashboard_210"
+      url: "https://gcpl232.cloud.looker.com/dashboards/210?Email={{ value | replace: ',', '^,' | url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}"
 
     }
 
