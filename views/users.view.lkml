@@ -67,6 +67,13 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
+
+    link: {
+      label: "Clinician Benchmark"
+      url: "https://gcpl232.cloud.looker.com/dashboards/210?Email=NULL & email={{ value | replace: ',', '^,' | url_encode}}"
+
+    }
+
   }
 
   dimension: first_name {
