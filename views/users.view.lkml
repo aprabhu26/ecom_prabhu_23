@@ -67,6 +67,7 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
+    drill_fields: [first_name,last_name,count]
   }
 
   dimension: first_name {

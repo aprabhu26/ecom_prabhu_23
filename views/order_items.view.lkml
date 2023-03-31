@@ -87,6 +87,12 @@ measure: sum_dim {
     drill_fields: [id, orders.id, inventory_items.id]
   }
 
+  measure: gender_test {
+    type: string
+    sql: ${users.gender} ;;
+  }
+
+
   dimension: Dummy {
     type: string
     sql: 1 ;;
