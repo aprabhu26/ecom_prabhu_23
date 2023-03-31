@@ -90,8 +90,15 @@ measure: sum_dim {
   measure: gender_test {
     type: string
     sql: ${users.gender} ;;
+    }
+  measure: returned_count {
+    type: count_distinct
+    sql: ${id} ;;
+    link: {
+      label: "Explore Top 20 Results"
+      url: "{{ link }}&limit=20"
+    }
   }
-
 
   dimension: Dummy {
     type: string
@@ -99,7 +106,7 @@ measure: sum_dim {
     html: <div>
           <nav style="font-size: 18px; padding: 5px 10px 0 10px; height: 60px">
 
-          <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" target="new" href="http://gcpl232.cloud.looker.com/dashboards/143?State={{ _filters['users.state'] | url_encode }}"> Detailed </a>
+          <a style="padding: 5px 15px; border-bottom: solid 1px #4285F4; float: left; line-height: 40px;" target="new" href="http://gcpl232.cloud.looker.com/dashboards/143?State={{ _filters['users.state'] | url_encode }}&Category={{ _filters['products.category'] | url_encode }}"> Detailed </a>
 
           <a style="padding: 5px 15px; border-top: solid 1px #4285F4; border-left: solid 1px #4285F4; border-right: solid 1px #4285F4; border-radius: 5px 5px 0 0; float: left; line-height: 40px; font-weight: bold; background-color: #eaf1fe;" href="#home"> Summarised </a>
 
