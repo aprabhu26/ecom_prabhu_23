@@ -37,7 +37,12 @@ view: orders {
 
   dimension: status {
     type: string
-    sql: ${TABLE}.status ;;
+    # sql: ${TABLE}.status ;;
+    sql: case
+    when ${TABLE}.status = "complete" then '{{_localization['complete']}}'
+    when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
+    else '{{_localization['cancelled']}}'
+    end;;
     # html:
     # {% if value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
@@ -46,24 +51,24 @@ view: orders {
     # {% else %}
     # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% endif %};;
-    html:
-    {% if value == 'complete' %}
-    {% assign indicator = "green,▲" | split: ',' %}
-    {% elsif value == 'cancelled' %}
-    {% assign indicator = "red,▼" | split: ',' %}
-    {% else %}
-    {% assign indicator = "black,▬" | split: ',' %}
-  {% endif %}
+  #   html:
+  #   {% if value == 'complete' %}
+  #   {% assign indicator = "green,▲" | split: ',' %}
+  #   {% elsif value == 'cancelled' %}
+  #   {% assign indicator = "red,▼" | split: ',' %}
+  #   {% else %}
+  #   {% assign indicator = "black,▬" | split: ',' %}
+  # {% endif %}
 
-      <font color="{{indicator[0]}}">
+  #     <font color="{{indicator[0]}}">
 
-      {% if value == 99999.12345 %} &infin
+  #     {% if value == 99999.12345 %} &infin
 
-      {% else %}{{rendered_value}}
+  #     {% else %}{{rendered_value}}
 
-      {% endif %} {{indicator[1]}}
+  #     {% endif %} {{indicator[1]}}
 
-      </font> ;;
+  #     </font> ;;
 
   }
 

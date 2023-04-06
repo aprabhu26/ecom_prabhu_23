@@ -8,6 +8,8 @@
 
 "cancelled" : "status_cancelled",
 
-"pending" : "status_pending"
+"pending" : "status_pending",
+
+"description" : "This dashboard tells about the order_status"
 
 }
