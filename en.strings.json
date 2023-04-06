@@ -1,0 +1,13 @@
+{
+
+"m" : "Male",
+
+"f" : "Female",
+
+"complete" : "status_complete",
+
+"cancelled" : "status_cancelled",
+
+"pending" : "status_pending"
+
+}
