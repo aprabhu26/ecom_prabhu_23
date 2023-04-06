@@ -57,3 +57,24 @@
     defaults_version: 1
     series_types: {}
     show_null_points: true
+  filters:
+  - name: pending_Status
+    title: pending_Status
+    type: field_filter
+    default_value: 'pending'
+    allow_multiple_values: true
+    required: false
+    model: ecom_prabhu_230
+    explore: orders
+    listens_to_filters: []
+    field: orders.status
+  - name: complete_Status
+    title: complete_Status
+    type: field_filter
+    default_value: 'complete'
+    allow_multiple_values: true
+    required: false
+    model: ecom_prabhu_230
+    explore: orders
+    listens_to_filters: []
+    field: orders.status

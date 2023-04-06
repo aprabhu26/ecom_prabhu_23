@@ -67,12 +67,12 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
-    link: {
-      label: "Dashboard_212"
-       url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{orders.status | replace: ',', '^,' | url_encode}}"
-       #url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Status={{ orders.status | replace: ',', '^,' | url_encode}}&Cost={{ inventory_items.cost | replace: ',','^,' | url_encode}}"
+    # link: {
+    #   label: "Dashboard_212"
+    #   url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{orders.status | replace: ',', '^,' | url_encode}}"
+    #   #url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Status={{ orders.status | replace: ',', '^,' | url_encode}}&Cost={{ inventory_items.cost | replace: ',','^,' | url_encode}}"
 
-    }
+    # }
 
   }
 
@@ -84,6 +84,10 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    # sql: CASE
+    # WHEN ${TABLE}.gender = 'm' THEN '{{ _localization['m'] }}'
+    # ELSE '{{ _localization['f'] }}'
+    # END;;
   }
 
   dimension: last_name {
@@ -105,6 +109,7 @@ view: users {
     type: count
     drill_fields: [detail*]
   }
+
 
 
 

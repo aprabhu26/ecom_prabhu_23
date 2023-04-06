@@ -209,6 +209,8 @@
     col: 14
     width: 10
     height: 6
+
+
   filters:
   - name: State
     title: State
@@ -239,7 +241,7 @@
   - name: Gender
     title: Gender
     type: field_filter
-    default_value: ''
+    default_value: "{{_localization['m'] }}"
     allow_multiple_values: true
     required: false
     ui_config:
