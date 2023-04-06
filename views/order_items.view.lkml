@@ -51,12 +51,31 @@ view: order_items {
       week,
       month,
       quarter,
+      quarter_of_year,
       year
     ]
     sql: ${TABLE}.returned_at ;;
   }
 
+  # dimension: trends_dashboard_order_completed_date_value {
+  #   group_label: "Trends Dashboard"
+  #   label: "Date Value (Order Completed)"
+  #   type: string
+  #   sql:CASE
+  #     WHEN {% parameter trends_dashboard_date_granularity %} = 'Weekly'
+  #     THEN ${returned_week}
+
+  #     WHEN {% parameter trends_dashboard_date_granularity %} = 'Monthly'
+  #     THEN ${returned_month}
+
+  #     WHEN {% parameter trends_dashboard_date_granularity %} = 'Quarterly'
+  #     THEN ${returned_year}+ "_"+${returned_quarter_of_year}
+  #     END
+  #     ;;
+  # }
+
   dimension: sale_price {
+    label: "SALE_PRICE"
     type: number
     sql: ${TABLE}.sale_price ;;
   }

@@ -28,7 +28,9 @@ view: orders {
       year
     ]
     sql: ${TABLE}.created_at ;;
+
   }
+
 
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
@@ -36,34 +38,36 @@ view: orders {
 
 
   dimension: status {
+    label: "status_of_the_customer"
+    description: "status_info"
     type: string
     sql: ${TABLE}.status ;;
-    # html:
-    # {% if value == 'complete' %}
-    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% elsif value == 'cancelled' %}
-    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% else %}
-    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% endif %};;
     html:
     {% if value == 'complete' %}
-    {% assign indicator = "green,▲" | split: ',' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% elsif value == 'cancelled' %}
-    {% assign indicator = "red,▼" | split: ',' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
     {% else %}
-    {% assign indicator = "black,▬" | split: ',' %}
-  {% endif %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+  #   html:
+  # #   {% if value == 'complete' %}
+  # #   {% assign indicator = "green,▲" | split: ',' %}
+  # #   {% elsif value == 'cancelled' %}
+  # #   {% assign indicator = "red,▼" | split: ',' %}
+  # #   {% else %}
+  # #   {% assign indicator = "black,▬" | split: ',' %}
+  # # {% endif %}
 
-      <font color="{{indicator[0]}}">
+  # #     <font color="{{indicator[0]}}">
 
-      {% if value == 99999.12345 %} &infin
+  # #     {% if value == 99999.12345 %} &infin
 
-      {% else %}{{rendered_value}}
+  # #     {% else %}{{rendered_value}}
 
-      {% endif %} {{indicator[1]}}
+  # #     {% endif %} {{indicator[1]}}
 
-      </font> ;;
+  # #     </font> ;;
 
   }
 
@@ -81,6 +85,13 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [detail*]
+  #   html:{% if orders.status == 'complete' % }
+  #         <p style="color: black; background-color: green; font-size:100%; text-align:center">{{rendered_value}}</p>
+  #         {% elsif status == 'cancelled' %}
+  #         <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+  #         {% else %}
+  #         <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+  #         {% endif %};;
   }
 
   # ----- Sets of fields for drilling ------

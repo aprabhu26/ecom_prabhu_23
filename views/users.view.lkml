@@ -47,6 +47,10 @@ view: users {
     sql: ${TABLE}.country ;;
   }
 
+  dimension: country_city {
+    type: string
+    sql: concat(${country},"_",${city}) ;;
+  }
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
 
