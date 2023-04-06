@@ -46,6 +46,12 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+    # sql:case
+    # when ${TABLE}.status="complete" then '{{_localization['complete']}}'
+    # when ${TABLE}.status="pending" then '{{_localization['pending']}}'
+    # else '{{_localization['cancelled']}}'
+    # end;;
+
     # html:
     # {% if value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>

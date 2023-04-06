@@ -5,14 +5,16 @@
   tile_size: 100
 
   elements:
-  - name: add_a_unique_name_1678332841
-    title: Untitled Visualization
+  - title: Order_status _test
+    name: Order_status _test
     model: ecom_prabhu_230
     explore: orders
     type: looker_grid
     fields: [orders.status, orders.count, users.count]
+    filters: {}
     sorts: [orders.count desc 0]
     limit: 500
+    column_limit: 50
     query_timezone: America/Los_Angeles
     show_view_names: false
     show_row_numbers: true
@@ -57,23 +59,22 @@
     defaults_version: 1
     series_types: {}
     show_null_points: true
+    listen:
+      Status: orders.status
+    row: 0
+    col: 0
+    width: 24
+    height: 12
   filters:
-  - name: pending_Status
-    title: pending_Status
+  - name: Status
+    title: Status
     type: field_filter
-    default_value: 'pending'
+    default_value: ''
     allow_multiple_values: true
     required: false
-    model: ecom_prabhu_230
-    explore: orders
-    listens_to_filters: []
-    field: orders.status
-  - name: complete_Status
-    title: complete_Status
-    type: field_filter
-    default_value: 'complete'
-    allow_multiple_values: true
-    required: false
+    ui_config:
+      type: advanced
+      display: popover
     model: ecom_prabhu_230
     explore: orders
     listens_to_filters: []
