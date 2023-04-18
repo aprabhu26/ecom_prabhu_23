@@ -159,6 +159,12 @@ explore: order_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+
+  join: brand_order_facts_ndt {
+    type: left_outer
+    sql_on: ${products.brand} = ${brand_order_facts_ndt.product_brand} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: order_items_vijaya {
