@@ -35,6 +35,10 @@ explore: account {}
 
 explore: sql_runner_query {}
 
+explore: user_facts {}
+
+explore: user_fasts_dynamic_values_using_templated_filters {}
+
 explore: billion_orders {
   join: orders {
     type: left_outer
