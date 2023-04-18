@@ -13,36 +13,83 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
-  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
-  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
-
   dimension_group: created {
     type: time
     timeframes: [
       raw,
       time,
+      time_of_day,
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
-    sql: ${TABLE}.created_at ;;
+    sql: TO_TIMESTAMP(replace(${TABLE}.created_at, 'T', ' '), 'YYYY-MM-DD HH12:MI:SS.0000');;
+    html:
+    {% if status._value == 'complete' %}
+<p style="color: black; background-color: purple; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% elsif status._value == 'cancelled' %}
+<p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% else %}
+<p style="color: black; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% endif %};;
+    # {% if status._value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif status._value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
   }
-
-  # Here's what a typical dimension looks like in LookML.
-  # A dimension is a groupable field that can be used to filter query results.
-  # This dimension will be called "Status" in Explore.
 
 
   dimension: status {
     type: string
-    # sql: ${TABLE}.status ;;
-    sql: case
-    when ${TABLE}.status = "complete" then '{{_localization['complete']}}'
-    when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
-    else '{{_localization['cancelled']}}'
-    end;;
+    sql: ${TABLE}.status ;;
+
+    html:
+    {% if value == 'complete' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'cancelled' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+
+}
+
+  # Dates and timestamps can be represented in Looker using a dimension group of type: time.
+  # Looker converts dates and timestamps to the specified timeframes within the dimension group.
+
+  # dimension_group: created {
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     time,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   sql: ${TABLE}.created_at ;;
+  # }
+
+  # # Here's what a typical dimension looks like in LookML.
+  # # A dimension is a groupable field that can be used to filter query results.
+  # # This dimension will be called "Status" in Explore.
+
+
+  # dimension: status {
+  #   type: string
+  #   # sql: ${TABLE}.status ;;
+  #   sql: case
+  #   when ${TABLE}.status = "complete" then '{{_localization['complete']}}'
+  #   when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
+  #   else '{{_localization['cancelled']}}'
+  #   end;;
     # html:
     # {% if value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
@@ -70,7 +117,7 @@ view: orders {
 
   #     </font> ;;
 
-  }
+  # }
 
   dimension: user_id {
     type: number

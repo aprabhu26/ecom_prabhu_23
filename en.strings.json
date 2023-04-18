@@ -1,15 +1,15 @@
 {
 
-"m" : "Male",
+"m" : "पुरुष",
 
-"f" : "Female",
+"f" : "महिला",
 
-"complete" : "status_complete",
+"complete" : "पूरा",
 
-"cancelled" : "status_cancelled",
+"cancelled" : "रद्द",
 
-"pending" : "status_pending",
+"pending" : "इंतज़ार",
 
-"test" : "This dashboard tells about the order_status"
+"test" : "यह डैशबोर्ड order_status के बारे में बताता है"
 
 }
