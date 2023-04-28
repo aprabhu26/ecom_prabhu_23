@@ -26,14 +26,14 @@ view: orders {
       quarter,
       year
     ]
-    sql: TO_TIMESTAMP(replace(${TABLE}.created_at, 'T', ' '), 'YYYY-MM-DD HH12:MI:SS.0000');;
+    sql:${TABLE}.created_at;;
     html:
     {% if status._value == 'complete' %}
-<p style="color: black; background-color: purple; font-size:100%; text-align:center">{{ rendered_value }}</p>
+<p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% elsif status._value == 'cancelled' %}
 <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% else %}
-<p style="color: black; font-size:100%; text-align:center">{{ rendered_value }}</p>
+<p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% endif %};;
     # {% if status._value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
@@ -49,14 +49,14 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
 
-    html:
-    {% if value == 'complete' %}
-    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% elsif value == 'cancelled' %}
-    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% else %}
-    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    {% endif %};;
+    # html:
+    # {% if value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
 
 }
 
@@ -133,6 +133,14 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [detail*]
+    # html:
+    # {% if status._value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif status._value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
   }
 
   # ----- Sets of fields for drilling ------

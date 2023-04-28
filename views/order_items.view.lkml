@@ -55,6 +55,7 @@ view: order_items {
 
   dimension: order_id {
     type: number
+    suggestable: yes
     # hidden: yes
     sql: ${TABLE}.order_id ;;
   }
@@ -131,6 +132,28 @@ measure: sum_dim {
       url: "{{ link }}&limit=20"
     }
   }
+
+  # dimension: is_search_source {
+  #   type: yesno
+  #   sql: ${users.traffic_source}= "Search";;
+  # }
+
+  # measure: sales_from_complete_search_users {
+  #   type: sum
+  #   sql: ${sale_price} ;;
+  #   filters: [status: "Complete", is_search_source: "yes"]
+  # }
+
+  # measure: total_gross_margin {
+  #   type: sum
+  #   sql: ${sale_price} - ${inventory_items.cost};;
+  # }
+
+  # dimension: return_days {
+  #   type: number
+  #   sql: date_diff(${delivered_date},${returned_date},day);;
+  # }
+
 
   dimension: Dummy {
     type: string

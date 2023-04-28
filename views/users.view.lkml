@@ -53,6 +53,14 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+    html:
+    {% if orders.status._value == 'complete' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif orders.status._value == 'cancelled' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
   }
 
   dimension: country {
@@ -82,6 +90,7 @@ view: users {
     type: string
     sql: ${TABLE}.email ;;
 
+
     # link: {
     #   label: "Dashboard_212"
     #   url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{orders.status | replace: ',', '^,' | url_encode}}"
@@ -94,6 +103,7 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
+    order_by_field: subject_orderings
   }
 
   dimension: gender {
@@ -108,7 +118,20 @@ view: users {
 
   dimension: state {
     type: string
-    sql: ${TABLE}.state ;;
+    sql: ${TABLE}.state;;
+    order_by_field: subject_orderings
+  }
+
+  dimension: subject_orderings {
+    type: number
+    sql:
+      CASE
+        WHEN ${first_name} = 'A' THEN 1
+        WHEN ${first_name} = 'B' THEN 2
+        WHEN ${first_name} = 'C' THEN 3
+        ELSE 4
+      END ;;
+    description: "This dimension is used to force sort the subject dimension."
   }
 
   dimension: zip {
