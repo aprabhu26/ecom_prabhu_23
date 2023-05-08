@@ -11,6 +11,11 @@ datagroup: ecom_prabhu_230_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
+access_grant: can_view_financial_data {
+  user_attribute: test
+  allowed_values: [ "finance", "executive" ]
+}
+
 
 persist_with: ecom_prabhu_230_default_datagroup
 
