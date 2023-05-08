@@ -60,6 +60,7 @@ view: products {
   }
 
   dimension: item_name {
+    label: "Item name is replacing with items name"
     type: string
     group_label: "Group"
     sql: ${TABLE}.item_name ;;

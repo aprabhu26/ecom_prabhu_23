@@ -32,7 +32,9 @@ view: users {
   # This dimension will be called "Age" in Explore.
 
   dimension: age {
-    type: number
+    type: tier
+    tiers: [0,10,20,30,40,50,60,70,80]
+    style: classic
     sql: ${TABLE}.age ;;
   }
 
@@ -103,7 +105,19 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
-    order_by_field: subject_orderings
+    order_by_field: random_orderings
+  }
+
+  dimension: random_orderings {
+    type: number
+    sql:
+      CASE
+        WHEN ${first_name} = 'A' THEN 1
+        WHEN ${first_name} = 'B' THEN 2
+        WHEN ${first_name} = 'C' THEN 3
+        ELSE 4
+      END ;;
+    description: "This dimension is used to force sort the first_name dimension."
   }
 
   dimension: gender {
@@ -119,19 +133,6 @@ view: users {
   dimension: state {
     type: string
     sql: ${TABLE}.state;;
-    order_by_field: subject_orderings
-  }
-
-  dimension: subject_orderings {
-    type: number
-    sql:
-      CASE
-        WHEN ${first_name} = 'A' THEN 1
-        WHEN ${first_name} = 'B' THEN 2
-        WHEN ${first_name} = 'C' THEN 3
-        ELSE 4
-      END ;;
-    description: "This dimension is used to force sort the subject dimension."
   }
 
   dimension: zip {
