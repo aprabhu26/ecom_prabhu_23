@@ -88,7 +88,9 @@ explore: fakeorders {
 
 explore: fatal_error_user_derived_base {}
 
-explore: flights {}
+explore: flights {
+  required_access_grants: [can_view_financial_data]
+}
 
 explore: human {}
 
