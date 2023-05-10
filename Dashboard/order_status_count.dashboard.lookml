@@ -1,6 +1,7 @@
 - dashboard: order_status_count
   title: Order Status Count
   layout: newspaper
+  description : ''
   preferred_viewer: dashboards-next
   tile_size: 100
 
@@ -70,6 +71,7 @@
     title: Status
     type: field_filter
     default_value: ''
+    default_value: status_complete,status_pending
     allow_multiple_values: true
     required: false
     ui_config:

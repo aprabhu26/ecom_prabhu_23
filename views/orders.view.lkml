@@ -52,14 +52,20 @@ view: orders {
     # else '{{_localization['cancelled']}}'
     # end;;
 
-    # html:
-    # {% if value == 'complete' %}
-    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% elsif value == 'cancelled' %}
-    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% else %}
-    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% endif %};;
+    # sql: ${TABLE}.status ;;
+    # sql: case
+    # when ${TABLE}.status = "complete" then '{{_localization['complete']}}'
+    # when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
+    # else '{{_localization['cancelled']}}'
+    # end;;
+    html:
+    {% if value == 'complete' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'cancelled' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
   #   html:
   #   {% if value == 'complete' %}
   #   {% assign indicator = "green,▲" | split: ',' %}

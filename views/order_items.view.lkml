@@ -47,9 +47,11 @@ view: order_items {
     timeframes: [
       raw,
       time,
+      time_of_day,
       date,
       week,
       month,
+      month_name,
       quarter,
       year
     ]
@@ -87,20 +89,18 @@ measure: sum_dim {
     drill_fields: [id, orders.id, inventory_items.id]
   }
 
+  measure: gender_test {
+    type: string
+    sql: ${users.gender} ;;
+    }
   measure: returned_count {
     type: count_distinct
     sql: ${id} ;;
-    drill_fields: [detail*]
     link: {
       label: "Explore Top 20 Results"
       url: "{{ link }}&limit=20"
     }
   }
-
-  set: detail {
-    fields: [id, order_id, sale_price, products.brand, products.item_name, users.email]
-  }
-
 
   dimension: Dummy {
     type: string
