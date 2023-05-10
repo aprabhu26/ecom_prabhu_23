@@ -6,6 +6,36 @@ view: order_items {
   drill_fields: [id]
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
+  # required_access_grants: [can_view_financial_data]
+  parameter: select_timeframe {
+    type: unquoted
+    default_value: "returned_month"
+    allowed_value: {
+      value: "returned_date"
+      label: "Date"
+    }
+    allowed_value: {
+      value: "returned_week"
+      label: "Week"
+    }
+    allowed_value: {
+      value: "returned_month"
+      label: "Month"
+    }
+  }
+
+  dimension: dynamic_timeframe {
+    label_from_parameter: select_timeframe
+    type: string
+    sql:
+    {% if select_timeframe._parameter_value == 'returned_date' %}
+    ${returned_date}
+    {% elsif select_timeframe._parameter_value == 'returned_week' %}
+    ${returned_week}
+    {% else %}
+    ${returned_month}
+    {% endif %} ;;
+  }
 
   dimension: id {
     primary_key: yes
@@ -25,6 +55,7 @@ view: order_items {
 
   dimension: order_id {
     type: number
+    suggestable: yes
     # hidden: yes
     sql: ${TABLE}.order_id ;;
   }
@@ -101,6 +132,28 @@ measure: sum_dim {
       url: "{{ link }}&limit=20"
     }
   }
+
+  # dimension: is_search_source {
+  #   type: yesno
+  #   sql: ${users.traffic_source}= "Search";;
+  # }
+
+  # measure: sales_from_complete_search_users {
+  #   type: sum
+  #   sql: ${sale_price} ;;
+  #   filters: [status: "Complete", is_search_source: "yes"]
+  # }
+
+  # measure: total_gross_margin {
+  #   type: sum
+  #   sql: ${sale_price} - ${inventory_items.cost};;
+  # }
+
+  # dimension: return_days {
+  #   type: number
+  #   sql: date_diff(${delivered_date},${returned_date},day);;
+  # }
+
 
   dimension: Dummy {
     type: string

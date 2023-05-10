@@ -35,6 +35,15 @@ explore: account {}
 
 explore: sql_runner_query {}
 
+explore: user_facts {}
+
+explore: user_fasts_dynamic_values_using_templated_filters {}
+
+# access_grant: can_view_financial_data {
+#   user_attribute: test
+#   allowed_values: [ "finance", "executive" ]
+# }
+
 explore: billion_orders {
   join: orders {
     type: left_outer
@@ -79,7 +88,9 @@ explore: fakeorders {
 
 explore: fatal_error_user_derived_base {}
 
-explore: flights {}
+explore: flights {
+  # required_access_grants: [can_view_financial_data]
+}
 
 explore: human {}
 
@@ -153,6 +164,12 @@ explore: order_items {
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    relationship: many_to_one
+  }
+
+  join: brand_order_facts_ndt {
+    type: left_outer
+    sql_on: ${products.brand} = ${brand_order_facts_ndt.product_brand} ;;
     relationship: many_to_one
   }
 }

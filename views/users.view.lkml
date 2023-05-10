@@ -7,6 +7,20 @@ view: users {
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
 
+
+  filter: select_traffic_source {
+    type: string
+    suggest_explore: order_items
+    suggest_dimension: users.traffic_source
+  }
+
+  dimension: hidden_traffic_source_filter {
+    hidden: yes
+    type: yesno
+    sql: {% condition select_traffic_source %} ${traffic_source} {% endcondition %} ;;
+  }
+
+
   dimension: id {
     primary_key: yes
     type: number
@@ -18,7 +32,9 @@ view: users {
   # This dimension will be called "Age" in Explore.
 
   dimension: age {
-    type: number
+    type: tier
+    tiers: [0,10,20,30,40,50,60,70,80]
+    style: classic
     sql: ${TABLE}.age ;;
   }
 
@@ -39,6 +55,14 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+    html:
+    {% if orders.status._value == 'complete' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif orders.status._value == 'cancelled' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
   }
 
   dimension: country {
@@ -72,6 +96,7 @@ view: users {
     #   url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{orders.status | replace: ',', '^,' | url_encode}}"
     #   #url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Status={{ orders.status | replace: ',', '^,' | url_encode}}&Cost={{ inventory_items.cost | replace: ',','^,' | url_encode}}"
 
+
     # link: {
     #   label: "Dashboard_212"
     #   url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{orders.status | replace: ',', '^,' | url_encode}}"
@@ -84,6 +109,19 @@ view: users {
   dimension: first_name {
     type: string
     sql: ${TABLE}.first_name ;;
+    order_by_field: random_orderings
+  }
+
+  dimension: random_orderings {
+    type: number
+    sql:
+      CASE
+        WHEN ${first_name} = 'A' THEN 1
+        WHEN ${first_name} = 'B' THEN 2
+        WHEN ${first_name} = 'C' THEN 3
+        ELSE 4
+      END ;;
+    description: "This dimension is used to force sort the first_name dimension."
   }
 
   dimension: gender {
@@ -102,7 +140,7 @@ view: users {
 
   dimension: state {
     type: string
-    sql: ${TABLE}.state ;;
+    sql: ${TABLE}.state;;
   }
 
   dimension: zip {
@@ -110,9 +148,20 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  dimension: traffic_source {
+    type: string
+    sql: ${TABLE}.traffic_source ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: dynamic_count {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: [ hidden_traffic_source_filter: "Yes" ]
   }
 
 

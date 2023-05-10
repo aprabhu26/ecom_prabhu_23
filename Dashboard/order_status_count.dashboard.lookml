@@ -1,13 +1,16 @@
 - dashboard: order_status_count
   title: Order Status Count
+  description: "test"
   layout: newspaper
   description : ''
+
   preferred_viewer: dashboards-next
   tile_size: 100
 
   elements:
   - title: Order_status _test
     name: Order_status _test
+    description: "'{{_localization['test']}}'"
     model: ecom_prabhu_230
     explore: orders
     type: looker_grid
@@ -72,6 +75,7 @@
     type: field_filter
     default_value: ''
     default_value: status_complete,status_pending
+    default_value: इंतज़ार,पूरा
     allow_multiple_values: true
     required: false
     ui_config:

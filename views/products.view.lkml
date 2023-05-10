@@ -7,6 +7,25 @@ view: products {
   # This primary key is the unique key for this table in the underlying database.
   # You need to define a primary key in a view in order to join to other views.
 
+  filter: select_category {
+    type: string
+    suggest_explore: order_items
+    suggest_dimension: products.category
+  }
+
+  dimension: category_comparison {
+    type: string
+    sql:
+      CASE
+      WHEN {% condition select_category %}
+        ${category}
+        {% endcondition %}
+      THEN ${category}
+      ELSE 'All Other Categories'
+      END
+      ;;
+  }
+
   dimension: id {
     primary_key: yes
     type: number
@@ -19,17 +38,19 @@ view: products {
 
   dimension: brand {
     type: string
+    group_label: "Group"
     sql: ${TABLE}.brand ;;
-    # link: {
-    #   label: "Dashboard_210"
+    link: {
+      label: "Dashboard_210"
     #   # url: "https://gcpl232.cloud.looker.com/dashboards/212?Email={{ value | replace: ',', '^,' | url_encode}}&Gender={{ gender | replace: ',', '^,' |url_encode}}&First+Name={{ first_name | replace: ',', '^,' | url_encode}}&Last+Name={{ last_name | replace: ',', '^,' | url_encode}}&Status={{ orders.status | replace: ',', '^,' | url_encode}}&Category={{ products.Category | replace: ',', '^,' | url_encode}}"
-    #   url: "https://gcpl232.cloud.looker.com/dashboards/212?Brand={{ brand | replace: ',', '^,' | url_encode}}"
+      url: "https://gcpl232.cloud.looker.com/dashboards/212?Brand={{ brand | replace: ',', '^,' | url_encode}}"
 
-    # }
+    }
   }
 
   dimension: category {
     type: string
+    group_label: "Group"
     sql: ${TABLE}.category ;;
   }
 
@@ -39,7 +60,9 @@ view: products {
   }
 
   dimension: item_name {
+    label: "Item name is replacing with items name"
     type: string
+    group_label: "Group"
     sql: ${TABLE}.item_name ;;
   }
 
