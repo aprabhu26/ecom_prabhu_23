@@ -34,10 +34,9 @@ view: orders {
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Status" in Explore.
 
-
   dimension: status {
-    type: string
-    sql: ${TABLE}.status ;;
+    type: yesno
+    sql: COALESCE(${TABLE}.status, 0);;
     # html:
     # {% if value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
@@ -76,6 +75,10 @@ view: orders {
   dimension: Non_null_user_id {
     type: yesno
     sql: if(${user_id} = null,"Yes","No");;
+  }
+  measure: users_id {
+    type: number
+    sql: ${user_id} ;;
   }
 
   measure: count {
