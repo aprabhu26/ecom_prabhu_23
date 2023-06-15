@@ -68,7 +68,7 @@ view: inventory_items {
       week,
       month,
       quarter,
-      year
+      year,day_of_month
     ]
     sql: ${TABLE}.sold_at ;;
   }
