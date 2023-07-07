@@ -10,6 +10,7 @@
   - name: Nested_if_test
     title: Nested_if_test
     model: ecom_prabhu_230
+    description: "Test the dashboard for view"
     explore: users
     type: table
     fields: [users.city, users.age, users.email, users.state]
