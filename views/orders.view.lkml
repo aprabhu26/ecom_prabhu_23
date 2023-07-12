@@ -35,6 +35,24 @@ view: orders {
 {% else %}
 <p style="color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% endif %};;
+}
+
+  # dimension_group: created {
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     time,
+  #     time_of_day,
+  #     date,
+  #     week,
+  #     month,
+  #     month_name,
+  #     quarter,
+  #     year
+  #   ]
+  #   sql: ${TABLE}.created_at ;;
+
+    # html:
     # {% if status._value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% elsif status._value == 'cancelled' %}
@@ -42,12 +60,49 @@ view: orders {
     # {% else %}
     # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% endif %};;
-  }
+
+    # sql:${TABLE}.created_at;;
+#     html:
+#     {% if status._value == 'complete' %}
+# <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% elsif status._value == 'cancelled' %}
+# <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% else %}
+# <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% endif %};;
+    # {% if status._value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif status._value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
 
 
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
+  }
+    # sql:case
+    # when ${TABLE}.status="complete" then '{{_localization['complete']}}'
+    # when ${TABLE}.status="pending" then '{{_localization['pending']}}'
+    # else '{{_localization['cancelled']}}'
+    # end;;
+
+    # sql: ${TABLE}.status ;;
+    # sql: case
+    # when ${TABLE}.status = "complete" then '{{_localization['complete']}}'
+    # when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
+    # else '{{_localization['cancelled']}}'
+    # end;;
+    # html:
+    # {% if value == 'complete' %}
+    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% elsif value == 'cancelled' %}
+    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% else %}
+    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    # {% endif %};;
 
     # html:
     # {% if value == 'complete' %}
@@ -58,7 +113,6 @@ view: orders {
     # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% endif %};;
 
-}
 
   # Dates and timestamps can be represented in Looker using a dimension group of type: time.
   # Looker converts dates and timestamps to the specified timeframes within the dimension group.
@@ -133,15 +187,7 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [detail*]
-    # html:
-    # {% if status._value == 'complete' %}
-    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% elsif status._value == 'cancelled' %}
-    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% else %}
-    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% endif %};;
-  }
+ }
 
   # ----- Sets of fields for drilling ------
   set: detail {
@@ -159,4 +205,5 @@ view: orders {
       ten_million_orders.count
     ]
   }
+
 }

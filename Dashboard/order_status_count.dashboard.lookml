@@ -2,6 +2,8 @@
   title: Order Status Count
   description: "test"
   layout: newspaper
+  description : ''
+
   preferred_viewer: dashboards-next
   tile_size: 100
 
@@ -13,6 +15,7 @@
     explore: orders
     type: looker_grid
     fields: [orders.status, orders.count, users.count]
+    filters: {}
     sorts: [orders.count desc 0]
     limit: 500
     column_limit: 50
@@ -70,6 +73,8 @@
   - name: Status
     title: Status
     type: field_filter
+    default_value: ''
+    default_value: status_complete,status_pending
     default_value: इंतज़ार,पूरा
     allow_multiple_values: true
     required: false

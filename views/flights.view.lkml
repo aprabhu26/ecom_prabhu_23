@@ -9,7 +9,7 @@ view: flights {
   # Here's what a typical dimension looks like in LookML.
   # A dimension is a groupable field that can be used to filter query results.
   # This dimension will be called "Arr Delay" in Explore.
-  required_access_grants: [can_view_financial_data]
+  # required_access_grants: [can_view_financial_data]
   dimension: arr_delay {
     type: number
     sql: ${TABLE}.arr_delay ;;

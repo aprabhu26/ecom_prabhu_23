@@ -12,7 +12,7 @@
   title: Summarised
   layout: newspaper
   preferred_viewer: dashboards-next
-  description: ''
+  description: 'This is summarised dashboard'
   preferred_slug: ObmdsSz0HR4e6ixxIj80UU
   elements:
   - title: Summarised
@@ -210,6 +210,7 @@
     col: 14
     width: 10
     height: 6
+
   filters:
   - name: State
     title: State
@@ -240,7 +241,7 @@
   - name: Gender
     title: Gender
     type: field_filter
-    default_value: ''
+    default_value: m,f
     allow_multiple_values: true
     required: false
     ui_config:
