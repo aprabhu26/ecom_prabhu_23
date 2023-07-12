@@ -41,7 +41,7 @@ explore: user_fasts_dynamic_values_using_templated_filters {}
 
 access_grant: can_view_financial_data {
   user_attribute: test
-  allowed_values: [ "finance", "executive" ]
+  allowed_values: [ "finance"]
 }
 
 explore: billion_orders {
