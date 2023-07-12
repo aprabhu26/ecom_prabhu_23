@@ -49,6 +49,7 @@ view: flights {
   dimension: cancelled {
     type: string
     sql: ${TABLE}.cancelled ;;
+    required_access_grants: [can_view_financial_data]
   }
 
   dimension: carrier {
@@ -83,6 +84,7 @@ view: flights {
   dimension: distance {
     type: number
     sql: ${TABLE}.distance ;;
+    required_access_grants: [can_view_financial_data]
   }
 
   dimension: diverted {

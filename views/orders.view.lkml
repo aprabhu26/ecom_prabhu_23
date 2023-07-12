@@ -29,11 +29,11 @@ view: orders {
     sql:${TABLE}.created_at;;
     html:
     {% if status._value == 'complete' %}
-<p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+<p style="color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% elsif status._value == 'cancelled' %}
-<p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+<p style="color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% else %}
-<p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+<p style="color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
 {% endif %};;
     # {% if status._value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>

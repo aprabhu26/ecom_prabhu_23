@@ -59,6 +59,55 @@ view: products {
     sql: ${TABLE}.department ;;
   }
 
+  dimension: group_dimension{
+    type: string
+    sql: concat(${category}," ",${brand}," ",${department});;
+  }
+
+  parameter: group_parameter{
+    type: unquoted
+    allowed_value: {
+      label: "Accessories"
+      value: "Accessories"
+    }
+    allowed_value: {
+      label: "Active"
+      value: "Active"
+    }
+    allowed_value: {
+      label: "adidas"
+      value: "adidas"
+    }
+    allowed_value: {
+      label: "Ray-Ban"
+      value: "Ray-Ban"
+    }
+    allowed_value: {
+      label: "Men"
+      value: "Men"
+    }
+    allowed_value: {
+      label: "Women"
+      value: "Women"
+    }
+  }
+
+  measure: count_accessories {
+    type: count_distinct
+    sql: ${id} ;;
+    filters: {
+       field: category
+       value: "Accessories"
+     }
+  }
+
+  # measure: group_dimension_filter{
+  #   type: count
+  #   sql: {%if group_parameter._parameter_value == 'Accessories'%}
+  #   category._value == "Accessories"
+  #   {%endif%};;
+  # }
+
   dimension: item_name {
     label: "Item name is replacing with items name"
     type: string
@@ -74,6 +123,7 @@ view: products {
   dimension: retail_price {
     type: number
     sql: ${TABLE}.retail_price ;;
+    value_format: "0.00\%"
   }
 
   # A measure is a field that uses a SQL aggregate function. Here are defined sum and average
