@@ -13,6 +13,30 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension_group: created {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      time_of_day,
+      date,
+      week,
+      month,
+      month_name,
+      quarter,
+      year
+    ]
+    sql:${TABLE}.created_at;;
+    html:
+    {% if status._value == 'complete' %}
+<p style="color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% elsif status._value == 'cancelled' %}
+<p style="color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% else %}
+<p style="color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+{% endif %};;
+}
+
   # dimension_group: created {
   #   type: time
   #   timeframes: [

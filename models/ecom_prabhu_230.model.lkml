@@ -39,10 +39,10 @@ explore: user_facts {}
 
 explore: user_fasts_dynamic_values_using_templated_filters {}
 
-# access_grant: can_view_financial_data {
-#   user_attribute: test
-#   allowed_values: [ "finance", "executive" ]
-# }
+access_grant: can_view_financial_data {
+  user_attribute: test
+  allowed_values: [ "finance"]
+}
 
 explore: billion_orders {
   join: orders {
@@ -90,6 +90,7 @@ explore: fatal_error_user_derived_base {}
 
 explore: flights {
   # required_access_grants: [can_view_financial_data]
+
 }
 
 explore: human {}

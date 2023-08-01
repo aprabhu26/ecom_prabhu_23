@@ -1,6 +1,7 @@
 - dashboard: summarised
   title: Summarised
   layout: newspaper
+  refresh : 1 hour
   preferred_viewer: dashboards-next
   tile_size: 100
 
