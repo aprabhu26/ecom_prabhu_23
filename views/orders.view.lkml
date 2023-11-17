@@ -13,6 +13,30 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+#   dimension_group: created {
+#     type: time
+#     timeframes: [
+#       raw,
+#       time,
+#       time_of_day,
+#       date,
+#       week,
+#       month,
+#       month_name,
+#       quarter,
+#       year
+#     ]
+#     sql:${TABLE}.created_at;;
+#     html:
+#     {% if status._value == 'complete' %}
+# <p style="color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% elsif status._value == 'cancelled' %}
+# <p style="color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% else %}
+# <p style="color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+# {% endif %};;
+# }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -26,40 +50,17 @@ view: orders {
       quarter,
       year
     ]
-    sql:${TABLE}.created_at;;
-    html:
-    {% if status._value == 'complete' %}
-<p style="color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-{% elsif status._value == 'cancelled' %}
-<p style="color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-{% else %}
-<p style="color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-{% endif %};;
-}
-
-  # dimension_group: created {
-  #   type: time
-  #   timeframes: [
-  #     raw,
-  #     time,
-  #     time_of_day,
-  #     date,
-  #     week,
-  #     month,
-  #     month_name,
-  #     quarter,
-  #     year
-  #   ]
-  #   sql: ${TABLE}.created_at ;;
+    sql: ${TABLE}.created_at ;;
 
     # html:
-    # {% if status._value == 'complete' %}
+    # {% if status._value == 'COMPLETED' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% elsif status._value == 'cancelled' %}
+    # {% elsif status._value == 'CANCELLED' %}
     # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% else %}
     # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
     # {% endif %};;
+    }
 
     # sql:${TABLE}.created_at;;
 #     html:
@@ -82,7 +83,7 @@ view: orders {
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
-  }
+
     # sql:case
     # when ${TABLE}.status="complete" then '{{_localization['complete']}}'
     # when ${TABLE}.status="pending" then '{{_localization['pending']}}'
@@ -95,15 +96,15 @@ view: orders {
     # when ${TABLE}.status = "pending" then '{{_localization['pending']}}'
     # else '{{_localization['cancelled']}}'
     # end;;
-    # html:
-    # {% if value == 'complete' %}
-    # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% elsif value == 'cancelled' %}
-    # <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% else %}
-    # <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
-    # {% endif %};;
-
+    html:
+    {% if value == 'COMPLETED' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif value == 'CANCELLED' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+}
     # html:
     # {% if value == 'complete' %}
     # <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
@@ -186,6 +187,15 @@ view: orders {
 
   measure: count {
     type: count
+    html:
+    {% if status._value == 'COMPLETED' %}
+    <p style="color: black; background-color: green; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% elsif status._value == 'CANCELLED' %}
+    <p style="color: black; background-color: red; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% else %}
+    <p style="color: black; background-color: yellow; font-size:100%; text-align:center">{{ rendered_value }}</p>
+    {% endif %};;
+
     drill_fields: [detail*]
  }
 

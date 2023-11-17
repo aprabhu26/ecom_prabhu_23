@@ -6,6 +6,7 @@ connection: "thelook"
 # include: "/Dashboard/LookML_Dashboard_Test.dashboard.lookml"
 
 include: "/Dashboard/*.dashboard.lookml"
+include:"/Dashboard/test_3_tru.dashboard.lookml"
 
 # include all views in the views/ folder in this project
 # include: "/**/*.view.lkml"                 # include all views in this project
