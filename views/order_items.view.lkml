@@ -94,6 +94,11 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+  measure: Sales_price_sum {
+    type: sum
+    sql: ${sale_price} ;;
+  }
+
 measure: sum_dim {
   type: number
   sql: ${order_id}+${orders.id} ;;
